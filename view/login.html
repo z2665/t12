@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>登陆</title>
+	<link rel="stylesheet" href="/static/css/normalize.min.css">
+	<link rel="stylesheet" href="/static/css/global.css">
+	<link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body>
+    <div class="header">
+    	<div class="nav">
+            <div class="logo"></div>
+            <div class="ul-wrap">
+                <ul class="menu">
+                    <li><a href="#">发布信息</a></li>
+                    <li><a href="#">浏览合伙信息</a></li>
+                    <li><a href="#">信息反馈</a></li>
+                </ul>
+                <ul class="personal-info">
+                    <li class="msg"><a href="#">0</a></li>
+                    <li class="set"><a href="#">个人设置</a></li>
+                    <li class="my-self"><a href="#">meij</a></li>
+                </ul>
+            </div>
+    	</div>
+        
+    </div>
+
+    <div class="main-content">
+        <div class="login-wrap">
+    		<h1 class="login-title">登录FOUND</h1>
+    		<fieldset>
+                <form class="login-form" action="/api/users/login" method="post">
+				<div class="name-wrap">
+					<label for="name">用户名</label>
+                    <div class="input-name-wrap">
+                        <input id="name" name="username" type="text">
+                    </div>
+				</div>
+				<div class="password-wrap">
+					<label for="name">密码</label>
+                    <div class="input-psd-wrap">
+                        <input id="psd" name="password" type="password">
+                    </div>
+				</div>
+				<div class="enter">
+					<input class="submit-btn btn-success btn" name="submit" type="submit" value="登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录">
+				</div>
+                </form>
+			</fieldset>
+    	</div>
+    </div>
+</body>
+</html>

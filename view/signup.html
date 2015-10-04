@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="/static/css/normalize.min.css">
+		<link rel="stylesheet" href="/static/css/global.css">
+		<link rel="stylesheet" href="/static/css/signup.css" />
+	</head>
+	<body>
+		<div class="header">
+	    	<div class="nav">
+	            <div class="logo"></div>
+	            <div class="ul-wrap">
+	                <ul class="menu">
+	                    <li><a href="#">发布信息</a></li>
+	                    <li><a href="#">浏览合伙信息</a></li>
+	                    <li><a href="#">信息反馈</a></li>
+	                </ul>
+	                <ul class="personal-info">
+	                    <li class="msg"><a href="#">0</a></li>
+	                    <li class="set"><a href="#">个人设置</a></li>
+	                    <li class="my-self"><a href="#">meij</a></li>
+	                </ul>
+	            </div>
+	    	</div>
+    	</div>
+		<div class="main-content">
+			<div class="step1">
+				<div class="text">
+					<h2>用户注册|须知</h2>
+				</div>
+				<div class="wrap-form">
+					<h4>用户条款</h4>
+					<p>额额额额额额额额额额额额额呃呃呃呃呃呃呃额额额额额额额额额额额额额呃呃呃呃呃呃呃呃呃呃呃呃呃呃额额额额额额额额额额额额额呃呃呃呃呃呃呃呃呃呃呃呃呃呃额额额额额额额额额额额额额呃呃呃呃呃呃呃呃呃呃呃呃呃呃额额额额额额额额额额额额额呃呃呃呃呃呃呃呃呃呃呃呃呃呃额额额额额额额额额额额额额呃呃呃呃呃呃呃呃呃呃呃呃呃呃额额额额额额额额额额额额额呃呃呃呃呃呃呃呃呃呃呃呃呃呃额额额额额额额额额额额额额呃呃呃呃呃呃呃呃呃呃呃呃呃呃额额额额额额额额额额额额额呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃呃额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额额</p>
+					<input type="button" class="agree btn btn-success submit-btn" value="同意"/>
+					<input type="button" class="disagree cacnel-btn btn-primary btn" value="不同意" />
+				</div>
+			</div>
+			<div class="step2" style="display:none">
+				<div class="text">
+					<h2>用户注册|信息</h2>
+				</div>
+				<div class="wrap-form">
+					<form id="regist" action="/api/users/signup" method="post" target="dataFrame" >
+						<div class="form-left">
+							 <div class="form-group">
+								<label for="username ">用户名</label>
+								<input id="username" type="text" name="username" class="form-control" placeholder="Username"/>
+							 </div>
+							 <div class="form-group">
+								<label for="email">电子邮箱</label>
+								<input id="email" type="text" name="email" class="form-control" placeholder="Email"/>
+							 </div>
+							  <div class="form-group">
+								<label for="password">用户密码</label>
+								<input id="password" type="password" name="password" class="form-control" placeholder="Password"/>
+							 </div>
+							 <div class="form-group">
+								<label for="truename ">真实姓名</label>
+								<input type="text" name="truename" class="form-control" placeholder="Name"/>
+							 </div>
+						</div>
+						<div class="form-right">
+							 <div class="form-group">
+								<label for="stunum  ">学号</label>
+								<input type="text" name="stunum" class="form-control" placeholder="Student Number"/>
+							 </div>
+							 <div class="form-group">
+								<label for="school">学校</label>
+								<select name="school" class="form-control">
+									<option>重庆邮电大学</option>
+									<option>重庆大学</option>
+								</select>
+							 </div>
+							 <div class="form-group">
+								<label for="schoolex ">学校额外信息</label>
+								<textarea name="schoolex" rows="3" cols="20" class="form-control"></textarea>
+							 </div>
+							  <div class="form-group">
+								<label for="confirm">验证码</label>
+								<input type="text" name="confirm" class="form-control"/>
+							 </div>
+							 <div class="btn-group">
+							 	<input id="registbtn" type="button" value="注册" class="submit-btn btn-success btn"/>
+							 	<input type="button" value="取消" class="cacnel-btn btn-primary btn"/>
+							 </div>
+						</div>
+					</form>
+					<iframe name="dataFrame" style="display:none"></iframe>
+				</div>
+			</div>
+			<div class="step3" style="display:none">
+				<div class="wrap-form">
+					<img class="successimg" src="/static/img/checkright.png"  alt="success"/>
+					<h1 class="successinfo">注册成功</h3>
+					<h3 class="successinfo">注册成功了，应该是的，反正没人知道,还会发生什么</h4>
+				</div>
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript" src="/static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="/static/js/signup.js" ></script>
+	</body>
+</html>

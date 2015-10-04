@@ -1,0 +1,90 @@
+html{
+	height:100%;
+}
+body{
+	height:100%;
+	font-family:Microsoft Yahei;
+	position:relative;
+	overflow:hidden;
+	min-height: 500px;
+}
+.header{
+	height:115px;
+    background-color:#0099CC;
+    width:100%;
+    position:absolute;
+    left:0;
+    background-image:url(../img/header-bg.png); 
+}
+
+.header .nav{
+	width:960px;
+	height:100%;
+	margin:0 auto;
+}
+
+.logo {
+    float: left;
+    background-image: url(../img/logo.png);
+    display: block;
+    width: 120px;
+    height: 115px;
+    background-position:left;
+    background-repeat: no-repeat;
+    background-size: 120px;
+}
+.nav .menu,.nav .personal-info{
+	margin:0 auto;
+	list-style-type:none;
+}
+a{text-decoration:none;}
+.nav .menu a,.nav .personal-info a{
+	color:white;
+}
+.nav .menu{
+	padding-left:0;	
+	float:left;
+}
+.nav .personal-info{
+	float:right;
+}
+.nav .menu li,.nav .personal-info li{
+	height:115px;
+	line-height:115px;
+	margin-left:20px;
+	float:left;
+}
+
+.ul-wrap{
+	
+    float:right;
+}
+
+.msg{
+	background:url(../img/msg.png) no-repeat left;
+	padding-left:25px;
+}
+
+.set{
+	background:url(../img/setLogo.png) no-repeat left;
+	padding-left:25px;
+}
+.my-self{
+	background:url(../img/myHeadImg.png) no-repeat left;
+	padding-left:28px;
+}
+
+
+
+/*内容区*/
+.main-content{
+	width:100%;
+	position:absolute;
+	left:0;
+	top:115px;
+	bottom:0;
+	background-color:#eee;
+	height:auto;
+}
+
+
