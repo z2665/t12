@@ -1,10 +1,13 @@
-t12API协议 v0.11
+t12API协议 v0.12
 
 基础约定
 1./static为静态目录
 图片文件放入/static/img
 js文件放入/static/js
 css文件放入/static/css
+
+扩展基础约定
+用户头像放入img/UserPic/headPic 命名方式为UserName.xxx
 
 协议约定
 一.UserController

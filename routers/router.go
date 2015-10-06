@@ -11,6 +11,7 @@ import (
 //20151004加入index路由
 func init() {
 	beego.InsertFilter("/api/froms/changs/*", beego.BeforeRouter, fliters.UserFliter)
+	beego.InsertFilter("/api/users/changs/*", beego.BeforeRouter, fliters.UserFliter)
 	beego.Include(&controllers.UserController{})
 	beego.Include(&controllers.FromController{})
 	beego.Include(&controllers.IndexController{})

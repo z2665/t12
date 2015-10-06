@@ -14,6 +14,7 @@ import (
 //20150929优化完成使用select返回指定字段
 //20150930优化数据库连接部分,加入注册用户名验证确保用户名唯一
 //20151004去除一些格式判断以后再加入
+//20151006加入用户头像，加入核心用户列
 type User struct {
 	UserName    string          `json:"userName"`
 	PassWord    string          `json:"passWord"`
@@ -23,11 +24,18 @@ type User struct {
 	School      string          `json:"school"`
 	SchoolEx    string          `json:"schoolEx"`
 	Email       string          `json:"email"`
+	UserPic     string          `json:"userPic"`
 	IsNormal    bool            `json:"isNormal"`
 	IsGreenCard bool            `json:"isGreenCard"`
 	FormList    []bson.ObjectId `json:"fromList"`
 	ResumeList  []bson.ObjectId `json:"resumeList"` //简历列表
 	MailBox     []MailContext   `json:"mailBox"`
+}
+
+//描述一个用户需要的最少资料
+type UserCore struct {
+	UserName string `json:"userName"`
+	UserPic  string `json:"userPic"`
 }
 type MailContext struct {
 }
@@ -90,4 +98,13 @@ func CheckUserWhenLogin(u User) error {
 		return errors.New("登陆失败，用户名或密码错误")
 	}
 
+}
+
+//添加用户头像
+func AddUserPic(uc UserCore) error {
+	s1 := GetSession()
+	defer s1.Close()
+	coll := s1.DB("test").C("users")
+	err := coll.Update(bson.M{"username": uc.UserName}, bson.M{"$set": bson.M{"userpic": uc.UserPic}})
+	return err
 }
