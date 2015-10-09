@@ -108,3 +108,10 @@ func AddUserPic(uc UserCore) error {
 	err := coll.Update(bson.M{"username": uc.UserName}, bson.M{"$set": bson.M{"userpic": uc.UserPic}})
 	return err
 }
+func GetCoreUser(uc *UserCore) error {
+	s1 := GetSession()
+	defer s1.Close()
+	coll := s1.DB("test").C("users")
+	coll.Find(bson.M{"username": uc.UserName}).Select(bson.M{"username": 1, "userpic": 1}).One(uc)
+	return nil
+}

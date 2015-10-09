@@ -69,4 +69,11 @@ func init() {
 			[]string{"post"},
 			nil})
 
+	beego.GlobalControllerRouter["z2665/t12/controllers:UserController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:UserController"],
+		beego.ControllerComments{
+			"GetUserCore",
+			`/api/users/nowusercore`,
+			[]string{"get"},
+			nil})
+
 }

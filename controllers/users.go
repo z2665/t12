@@ -5,6 +5,7 @@ package controllers
 import (
 	"fmt"
 	"github.com/astaxie/beego"
+	"github.com/pquerna/ffjson/ffjson"
 	"io"
 	"os"
 	"strings"
@@ -30,6 +31,7 @@ func (u *UserController) Adduser() {
 	user.School = u.GetString("school")
 	user.SchoolEx = u.GetString("schoolex")
 	user.Email = u.GetString("email")
+	user.UserPic = "defult.png"
 	beego.Notice(user)
 	err := models.CheckUserIsRight(user)
 	if err != nil {
@@ -115,5 +117,21 @@ func (u *UserController) AddUserHeadPic() {
 				u.ServeJson()
 			}
 		}
+	}
+}
+
+//20151009添加获取当前用户名和头像的逻辑
+// @router /api/users/nowusercore [get]
+func (u *UserController) GetUserCore() {
+	var uc models.UserCore
+	var ok bool
+	uc.UserName, ok = u.GetSession("longined").(string)
+	if !ok {
+		u.Redirect("/api/users/login", 302)
+	} else {
+		models.GetCoreUser(&uc)
+		buffer, _ := ffjson.Marshal(uc)
+		u.Ctx.Output.ContentType("application/javascript")
+		u.Ctx.Output.Body(buffer)
 	}
 }

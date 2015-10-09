@@ -1,4 +1,4 @@
-t12API协议 v0.12
+t12API协议 v0.13
 
 基础约定
 1./static为静态目录
@@ -83,5 +83,14 @@ url:/api/froms/changs/add
 	}
 	]
 }
-
+7.
+来源任何登陆后的界面
+request:ajax 
+method：post
+url:/api/users/nowusercore
+response：
+{
+	“userName” 用户名
+	"userPic"   用户头像名称
+}
 协议未稳定随时可能更改
