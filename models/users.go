@@ -7,7 +7,6 @@ import (
 	"strconv"
 )
 
-//ps：所有对json结构体更改之后执行ffjson
 //20150924创建最初版本，支持添加新用户和按名称查找
 //20150925加入错误上下文结构体
 //20150928加入email和输入验证以及登陆检查
@@ -15,6 +14,7 @@ import (
 //20150930优化数据库连接部分,加入注册用户名验证确保用户名唯一
 //20151004去除一些格式判断以后再加入
 //20151006加入用户头像，加入核心用户列
+//20151022移除ffjson依赖
 type User struct {
 	UserName    string          `json:"userName"`
 	PassWord    string          `json:"passWord"`

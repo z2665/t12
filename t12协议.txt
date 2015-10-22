@@ -1,4 +1,4 @@
-t12API协议 v0.13
+t12API协议 v0.14
 
 基础约定
 1./static为静态目录
@@ -71,15 +71,19 @@ url:/api/froms/changs/publish
  {
 	title      项目标题
 	content    项目详细内容
-	tags    [] 标签
-	beginDay     开始日期   
 	endDay       结束日期 
-	status       状态      //状态有正常，结束，过期，关闭,待审核
 	totalNeedPeopleNum 总共需要的人数
 	PeoPleList  [
 	{
 		peopleType       需要的人类型       
-		needNumber       需要的人数         
+		needNumber       需要的人数    
+		ps 				 注释     
+	}
+	contactWay {
+		phoneNumber
+		QQNumber
+		email
+		wechatNumber
 	}
 	]
 }

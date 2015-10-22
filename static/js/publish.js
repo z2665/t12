@@ -29,8 +29,8 @@ function createData(){
     var data={
             title:$("#pub-title")[0].value,
             content:$("#pub-detail")[0].value,
-            member:[],
-            deadline:$("#deadline")[0].value,
+            PeoPleList:[],
+            endDay:$("#deadline")[0].value,
           contactWay:{
                     phoneNumber:$("#phone")[0].value,
                     QQNumber:$("#qq")[0].value,
@@ -40,7 +40,8 @@ function createData(){
 
         },
         
-        oTr=$(".member-tab tbody tr");
+        oTr=$(".member-tab tbody tr"),
+        jsonData='';
 
     
    
@@ -48,25 +49,28 @@ function createData(){
     for(var i=0;i<oTr.length;i++){
         var oTd=oTr[i].getElementsByTagName('td'),
             singleMember={
-               number:0,
-               skill:"",
+               needNumber:0,
+               peopleType:"",
                ps:""
             };
         
 
-        singleMember["number"]=oTd[0].getElementsByTagName("input")[0].value;
-        singleMember["skill"]=oTd[1].getElementsByTagName("select")[0].value;
+        singleMember["needNumber"]=oTd[0].getElementsByTagName("input")[0].value;
+        singleMember["peopleType"]=oTd[1].getElementsByTagName("select")[0].value;
         singleMember["ps"]=oTd[2].getElementsByTagName("input")[0].value;
 
-        data.member.push(singleMember);
+        data.PeoPleList.push(singleMember);
     }
+    
+    jsonData=JSON.stringify(data);
+    
 
     $.ajax({
             type:'post',
             url:'/api/froms/changs/publish',
             dataType:'json',
             data:{
-                'data':data
+                'data':jsonData
 
             },
             async:false,

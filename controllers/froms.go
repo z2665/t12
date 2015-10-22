@@ -3,6 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"github.com/astaxie/beego"
+	"time"
 	"z2665/t12/models"
 )
 
@@ -21,10 +22,16 @@ func (f *FromController) GetFromPublishPage() {
 // @router /api/froms/changs/publish [post]
 func (f *FromController) FromPublishByUser() {
 	var from models.From
-	beego.Notice(string(f.Ctx.Input.RequestBody))
-	beego.Notice(f.GetString("data[title]"))
-	json.Unmarshal(f.Ctx.Input.RequestBody, &from)
+	tmp := f.GetString("data")
+	beego.Notice(tmp)
+	json.Unmarshal([]byte(tmp), &from)
+	//加入当前时间
+	from.BeginDay = time.Now().Format("2006-01-02 15:04:05")
+	//获得当前用户
+	from.MasterName, _ = f.GetSession("longined").(string)
+	//检查数据正确性
 	err := models.CheckFromIsRight(from)
+	models.FullFrom(&from)
 	if err != nil {
 		f.Data["json"] = models.ErrorContext{Err: err.Error()}
 		f.ServeJson()
