@@ -1,8 +1,8 @@
 package controllers
 
 import (
+	"encoding/json"
 	"github.com/astaxie/beego"
-	"github.com/pquerna/ffjson/ffjson"
 	"z2665/t12/models"
 )
 
@@ -23,7 +23,7 @@ func (f *FromController) FromPublishByUser() {
 	var from models.From
 	beego.Notice(string(f.Ctx.Input.RequestBody))
 	beego.Notice(f.GetString("data[title]"))
-	ffjson.Unmarshal(f.Ctx.Input.RequestBody, &from)
+	json.Unmarshal(f.Ctx.Input.RequestBody, &from)
 	err := models.CheckFromIsRight(from)
 	if err != nil {
 		f.Data["json"] = models.ErrorContext{Err: err.Error()}
@@ -44,6 +44,6 @@ func (f *FromController) FromGetList() {
 		f.Abort("404")
 	}
 	list := models.GetFromList(page)
-	buffer, _ := ffjson.Marshal(&list)
-	f.Ctx.ResponseWriter.Write(buffer)
+	f.Data["json"] = list
+	f.ServeJson()
 }

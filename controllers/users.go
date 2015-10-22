@@ -5,7 +5,6 @@ package controllers
 import (
 	"fmt"
 	"github.com/astaxie/beego"
-	"github.com/pquerna/ffjson/ffjson"
 	"io"
 	"os"
 	"strings"
@@ -130,8 +129,7 @@ func (u *UserController) GetUserCore() {
 		u.Redirect("/api/users/login", 302)
 	} else {
 		models.GetCoreUser(&uc)
-		buffer, _ := ffjson.Marshal(uc)
-		u.Ctx.Output.ContentType("application/javascript")
-		u.Ctx.Output.Body(buffer)
+		u.Data["json"] = uc
+		u.ServeJson()
 	}
 }
