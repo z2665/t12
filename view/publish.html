@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>发布信息</title>
+    <link rel="stylesheet" href="/static/css/normalize.min.css">
+    <link rel="stylesheet" href="/static/css/global.css">
+    <link rel="stylesheet" href="/static/css/publish.css">
+</head>
+<body>
+    <div class="header">
+    	<div class="nav">
+            <div class="logo"></div>
+            <div class="ul-wrap">
+                <ul class="menu">
+                    <li><a href="#">发布信息</a></li>
+                    <li><a href="#">浏览合伙信息</a></li>
+                    <li><a href="#">信息反馈</a></li>
+                </ul>
+                <ul class="personal-info">
+                    <li class="msg"><a href="#">0</a></li>
+                    <li class="set"><a href="#">个人设置</a></li>
+                    <li class="my-self"><a href="#">meij</a></li>
+                </ul>
+            </div>
+    	</div>
+    </div>
+
+    <div class="main-content">
+        <h1 class="crumbs">发布信息</h1>
+        <div class="center-content">
+            <h2>xxx</h2>
+            <div class="l-aside"></div>
+            <div class="pub-article">
+                <p>标题</p>
+                <input id="pub-title" type="text">
+                <p>具体内容</p>
+                <textarea id="pub-detail" class="text" name="intro" placeholder=""></textarea>
+                <p>需求量</p>
+                <table class="member-tab">
+                    <thead>
+                        <tr>
+                            <td>人数</td>
+                            <td>擅长</td>
+                            <td>备注</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input id="number" type="number"></td>
+                            <td>
+                                <select id="classify">
+                                    <option>web前端</option>
+                                    <option>C++</option>
+                                    <option>java后台</option>
+                                    <option>php</option>
+                                    <option>高等数学</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input id="ps" type="text" >
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a id="add" href="javascript:;"></a>
+
+                <p class="deadline-label">截止时间</p>
+                <input id="deadline" class="sang_Calender" type="text">
+                <script src="/static/js/lib/dateTime.js"></script>
+                <p>联系方式</p>
+                <ul>
+                    <li><label for="phone">手机</label><input id="phone" type="text"></li>
+                    <li><label for="qq">Q Q</label><input id="qq" type="text"></li>
+                    <li><label for="e-mail">邮箱</label><input id="email" type="text"></li>
+                    <li><label for="we-chat">微信</label><input id="we-chat" type="text"></li>
+                </ul>
+
+                <a class="publish-btn btn" href="#">发布</a>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/jquery/jquery.min.js"></script>
+    <script src="/static/js/publish.js"></script>
+</body>
+</html>

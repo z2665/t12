@@ -58,16 +58,16 @@ response：
 }
 
 5.
-来源/api/froms/changs/add [get]
+来源/api/froms/changs/publish [get]
 request: null
 response：
-显示添加项目页面 名字我还没想好你看着合适就取个吧.html
+显示添加项目页面 publish.html
 
 6.
-来源 名字我还没想好你看着合适就取个吧.html
+来源 publish.html
 request:ajax 
 method：post
-url:/api/froms/changs/add
+url:/api/froms/changs/publish
  {
 	title      项目标题
 	content    项目详细内容

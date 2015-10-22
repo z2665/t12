@@ -8,15 +8,15 @@ func init() {
 
 	beego.GlobalControllerRouter["z2665/t12/controllers:FromController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:FromController"],
 		beego.ControllerComments{
-			"GetFromAddPage",
-			`/api/froms/changs/add`,
+			"GetFromPublishPage",
+			`/api/froms/changs/publish`,
 			[]string{"get"},
 			nil})
 
 	beego.GlobalControllerRouter["z2665/t12/controllers:FromController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:FromController"],
 		beego.ControllerComments{
-			"FromAddByUser",
-			`/api/froms/changs/add`,
+			"FromPublishByUser",
+			`/api/froms/changs/publish`,
 			[]string{"post"},
 			nil})
 

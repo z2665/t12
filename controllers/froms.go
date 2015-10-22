@@ -11,16 +11,18 @@ type FromController struct {
 }
 
 //获取添加项目页面
-// @router /api/froms/changs/add [get]
-func (f *FromController) GetFromAddPage() {
-	f.Ctx.WriteString("test page")
+// @router /api/froms/changs/publish [get]
+func (f *FromController) GetFromPublishPage() {
+	StaticPageRender("./view/publish.html", f.Ctx.ResponseWriter)
 
 }
 
 //向后台添加项目
-// @router /api/froms/changs/add [post]
-func (f *FromController) FromAddByUser() {
+// @router /api/froms/changs/publish [post]
+func (f *FromController) FromPublishByUser() {
 	var from models.From
+	beego.Notice(string(f.Ctx.Input.RequestBody))
+	beego.Notice(f.GetString("data[title]"))
 	ffjson.Unmarshal(f.Ctx.Input.RequestBody, &from)
 	err := models.CheckFromIsRight(from)
 	if err != nil {
