@@ -55,7 +55,7 @@ function createData(){
             };
         
 
-        singleMember["needNumber"]=oTd[0].getElementsByTagName("input")[0].value;
+        singleMember["needNumber"]=parseInt(oTd[0].getElementsByTagName("input")[0].value);
         singleMember["peopleType"]=oTd[1].getElementsByTagName("select")[0].value;
         singleMember["ps"]=oTd[2].getElementsByTagName("input")[0].value;
 
