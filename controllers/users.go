@@ -133,3 +133,9 @@ func (u *UserController) GetUserCore() {
 		u.ServeJson()
 	}
 }
+
+//20151026添加找回密码界面
+// @router /api/users/forget [get]
+func (u *UserController) GetFindPassWordPage() {
+	StaticPageRender("./view/findPwd.html", u.Ctx.ResponseWriter)
+}
