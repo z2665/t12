@@ -1,0 +1,102 @@
+.tiptext{
+	padding-left: 2em;
+    text-align: center;
+    
+    margin: 0 auto;
+    font-size: 18px;
+    font-weight:normal;
+    height: 32px;
+    line-height: 32px;
+    background: url(../img/caution.png) no-repeat left;
+
+}
+
+.step1 .tiptext{
+	width: 300px;
+}
+
+.step2 .tiptext{
+	width: 100px;
+
+}
+
+.send-code{
+	float:left;
+	color:black;
+	background-color:#eee;
+}
+
+#v-code,#psd{
+	margin-left:42px;
+	width:100px;
+}
+#username{
+	margin-left:10px;
+	width:200px;
+}
+
+#v-code,#username,.vcode-img{
+	
+	height:30px;
+   
+}
+.vcode-img{
+	border:2px solid #eee;
+	padding:1px;
+	margin-left:10px;
+}
+.center-content{
+	width:960px;
+	border:1px solid #eee;
+	margin:0 auto 1em auto;
+	border-radius:4px;
+	overflow:hidden;
+	background-color:white;
+	padding:1em; 
+
+}
+
+ul li label,ul li img,ul li input{float:left;}
+.center-content ul li{
+	overflow: hidden;
+    width:300px;
+    margin:20px auto;
+}
+
+.center-content ul li:first-child{
+	margin-top:50px;
+}
+
+
+.submit-btn{
+	margin-top: 5px;
+    margin-bottom: 5px;
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+    width: 100px;
+    margin: 3em auto;
+}
+
+.submit-btn:hover{
+	background-color:#0099CC;
+}
+
+.get-vode{
+    display:inline;
+	color:black;
+}
+
+.center-content ul{border:1px solid white;}
+
+
+.step2{display:none;}
+
+
+
+.step1 .error-tip {
+	float:left;
+    margin:0 10px;
+    color:red;
+}
+.step1 ul li{width:400px;}
