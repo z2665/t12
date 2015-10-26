@@ -80,6 +80,13 @@ func init() {
 		beego.ControllerComments{
 			"GetFindPassWordPage",
 			`/api/users/forget`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["z2665/t12/controllers:UserController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:UserController"],
+		beego.ControllerComments{
+			"PreForgotPassWord",
+			`/api/users/forget`,
 			[]string{"get"},
 			nil})
 

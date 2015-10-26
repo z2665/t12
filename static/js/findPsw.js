@@ -18,7 +18,7 @@ $(function(){
             data:{
             	'data':jsonAccountInfo
             },
-            async:false
+            async:false,
             success:function(data){
                 
                 if(data.status){
@@ -47,7 +47,7 @@ $(function(){
             data:{
             	'data':jsonUpdata
             },
-            async:false
+            async:false,
             success:function(data){
                 
                 if(data.status){

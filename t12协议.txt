@@ -5,6 +5,9 @@ t12API协议 v0.14
 图片文件放入/static/img
 js文件放入/static/js
 css文件放入/static/css
+公共邮箱
+WeNedFound@163.com
+pass:TimeToFound
 
 扩展基础约定
 用户头像放入img/UserPic/headPic 命名方式为UserName.xxx
@@ -96,5 +99,15 @@ response：
 {
 	“userName” 用户名
 	"userPic"   用户头像名称
+}
+8.
+找回页面
+request:ajax 
+method：post
+url:/api/users/forget?username=&email=
+response：
+ {
+	"err"   
+	"data" 
 }
 协议未稳定随时可能更改

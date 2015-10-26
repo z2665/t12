@@ -139,3 +139,23 @@ func (u *UserController) GetUserCore() {
 func (u *UserController) GetFindPassWordPage() {
 	StaticPageRender("./view/findPwd.html", u.Ctx.ResponseWriter)
 }
+
+// @router /api/users/forget [post]
+func (u *UserController) PreForgotPassWord() {
+	var user models.User
+	user.UserName = u.GetString("username")
+	user.Email = u.GetString("email")
+	err := models.CheckUSerNameAndEmail(user)
+	if err != nil {
+		u.Data["json"] = models.ErrorContext{Err: err.Error()}
+	} else {
+		u.Data["json"] = models.ErrorContext{Data: "验证通过"}
+		var vcode models.Pair
+		vcode.UserName = user.UserName
+		key := models.MakeVcode(vcode.UserName)
+		vcode.Vcode = key
+		//models.ForGotSend(user.Email, vcode.Vcode)
+		models.SaveVcode(vcode)
+	}
+	u.ServeJson()
+}
