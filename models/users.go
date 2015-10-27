@@ -140,6 +140,7 @@ func CheckUSerNameAndEmail(u User) error {
 type Pair struct {
 	UserName string
 	Vcode    string
+	Nowtime  string
 }
 
 //存储验证信息

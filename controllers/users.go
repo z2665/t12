@@ -154,6 +154,7 @@ func (u *UserController) PreForgotPassWord() {
 		vcode.UserName = user.UserName
 		key := models.MakeVcode(vcode.UserName)
 		vcode.Vcode = key
+		vcode.Nowtime = time.Now().Format("2006-01-02 15:04:05")
 		//models.ForGotSend(user.Email, vcode.Vcode)
 		models.SaveVcode(vcode)
 	}
