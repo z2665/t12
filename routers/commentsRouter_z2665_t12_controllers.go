@@ -8,15 +8,15 @@ func init() {
 
 	beego.GlobalControllerRouter["z2665/t12/controllers:FromController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:FromController"],
 		beego.ControllerComments{
-			"GetFromPublishPage",
-			`/api/froms/changs/publish`,
+			"GetFromAddPage",
+			`/api/froms/changs/add`,
 			[]string{"get"},
 			nil})
 
 	beego.GlobalControllerRouter["z2665/t12/controllers:FromController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:FromController"],
 		beego.ControllerComments{
-			"FromPublishByUser",
-			`/api/froms/changs/publish`,
+			"FromAddByUser",
+			`/api/froms/changs/add`,
 			[]string{"post"},
 			nil})
 
@@ -24,13 +24,6 @@ func init() {
 		beego.ControllerComments{
 			"FromGetList",
 			`/api/froms/lsit`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["z2665/t12/controllers:IndexController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:IndexController"],
-		beego.ControllerComments{
-			"GetIndexPage",
-			`/`,
 			[]string{"get"},
 			nil})
 
@@ -60,20 +53,6 @@ func init() {
 			"UserLogin",
 			`/api/users/login`,
 			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["z2665/t12/controllers:UserController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:UserController"],
-		beego.ControllerComments{
-			"AddUserHeadPic",
-			`/api/users/changs/userheadpic`,
-			[]string{"post"},
-			nil})
-
-	beego.GlobalControllerRouter["z2665/t12/controllers:UserController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:UserController"],
-		beego.ControllerComments{
-			"GetUserCore",
-			`/api/users/nowusercore`,
-			[]string{"get"},
 			nil})
 
 }
