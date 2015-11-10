@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+    <link rel="stylesheet" href="../css/normalize.min.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/personal-info.css">
+</head>
+<body>
+    <div class="header">
+        <div class="nav">
+            <div class="logo"></div>
+            <div class="ul-wrap">
+                <ul class="menu">
+                    <li><a href="#">发布信息</a></li>
+                    <li><a href="#">浏览合伙信息</a></li>
+                    <li><a href="#">信息反馈</a></li>
+                </ul>
+                <ul class="personal-info">
+                    <li class="msg"><a href="#">0</a></li>
+                    <li class="set"><a href="#">个人设置</a></li>
+                    <li class="my-self"><a href="#">meij</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <article></article>
+    <div id="main-content">
+        <div class="wrap">
+            <div class="info-left">
+                <div class="info-left-top">
+                    <img id="info-head" src="../img/head.jpg">
+                    <div id="info-head-box">
+                        <div class="head-text">修改头像</div>
+                        <div class="head-bg"></div>
+                    </div>
+                </div>
+                <div class="info-left-bottom">
+                    <a id="info" href="#">个人信息</a><br>
+                    <a id="pw" href="#">修改密码</a>
+                </div>
+            </div>
+            <div class="info-right">
+                <form id="personal-info" action="">
+                    <div class="group">
+                        <label for="username">用户名</label>
+                        <input id="username" type="text" disabled="disabled" placeholder="username"><br>
+                    </div>
+                    <div class="group">
+                        <label for="email">电子邮箱</label>
+                        <input id="email" type="text" disabled="disabled" placeholder="email"><br>
+                    </div>
+                    <div class="group">
+                        <label for="name">真实姓名</label>
+                        <input id="name" type="text" disabled="disabled" placeholder="name"><br>
+                    </div>
+                    <div class="group">
+                        <label for="stu-num">学号</label>
+                        <input id="stu-num" type="tel" disabled="disabled" placeholder="stu-num"><br>
+                    </div>
+                    <div class="group">
+                        <label for="school">学校</label>
+                        <input id="school" type="text" disabled="disabled" placeholder="重庆邮电大学">
+                    </div>
+                    <div class="group">
+                        <label for="school-info">学校额外信息</label>
+                        <input id="school-info" disabled="disabled" type="text">
+                    </div>
+                    <button id="into-vim" type="button">编辑信息</button>
+                    <button id="ensure-info" type="button">确定</button>
+                    <button id="cancel" type="button">返回</button>
+                </form>
+                <form id="update-pw" action="">
+                    <div class="group">
+                        <label for="old-pw">原密码</label>
+                        <input id="old-pw" type="password">
+                    </div>
+                    <div class="group">
+                        <label for="new-pw">新密码</label>
+                        <input id="new-pw" type="password">
+                    </div>
+                    <div class="group">
+                        <label for="check-new-pw">确认密码</label>
+                        <input id="check-new-pw" type="password">
+                    </div>
+                    <button id="ensure-pw" type="button">确定</button>
+                    <button id="clear" type="button">清空</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/personal-info.js"></script>
+</body>
+</html>
