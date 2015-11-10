@@ -1,7 +1,6 @@
 .tiptext{
 	padding-left: 2em;
     text-align: center;
-    
     margin: 0 auto;
     font-size: 18px;
     font-weight:normal;
@@ -27,15 +26,24 @@
 }
 
 #v-code,#psd{
-	margin-left:42px;
+	margin-left:4px;
 	width:100px;
 }
-#username{
+
+.step2 #v-code,.step2 #psd,.step2 #username{
+	margin-left:42px;
+}
+.step1 #username-email{
+	margin-left:20px;
+	width:200px;
+}
+.step2 #username-email{
 	margin-left:10px;
 	width:200px;
 }
 
-#v-code,#username,.vcode-img{
+
+#v-code,#username-email,.vcode-img,#username,#psd{
 	
 	height:30px;
    
@@ -44,6 +52,7 @@
 	border:2px solid #eee;
 	padding:1px;
 	margin-left:10px;
+	width:100px;
 }
 .center-content{
 	width:960px;
@@ -59,7 +68,7 @@
 ul li label,ul li img,ul li input{float:left;}
 .center-content ul li{
 	overflow: hidden;
-    width:300px;
+    width:310px;
     margin:20px auto;
 }
 
@@ -99,4 +108,7 @@ ul li label,ul li img,ul li input{float:left;}
     margin:0 10px;
     color:red;
 }
-.step1 ul li{width:400px;}
+.step1 ul li,.step2 ul li{
+	width:400px;
+    line-height: 36px;
+}

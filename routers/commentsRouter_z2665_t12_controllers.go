@@ -55,4 +55,35 @@ func init() {
 			[]string{"post"},
 			nil})
 
+<<<<<<< HEAD
+=======
+	beego.GlobalControllerRouter["z2665/t12/controllers:UserController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:UserController"],
+		beego.ControllerComments{
+			"AddUserHeadPic",
+			`/api/users/changs/userheadpic`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["z2665/t12/controllers:UserController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:UserController"],
+		beego.ControllerComments{
+			"GetUserCore",
+			`/api/users/nowusercore`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["z2665/t12/controllers:UserController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:UserController"],
+		beego.ControllerComments{
+			"GetFindPassWordPage",
+			`/api/users/forget`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["z2665/t12/controllers:UserController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:UserController"],
+		beego.ControllerComments{
+			"PreForgotPassWord",
+			`/api/users/forget`,
+			[]string{"get"},
+			nil})
+
+>>>>>>> b0b70e73e651443ffde98cf327ecaf79a00b5b56
 }

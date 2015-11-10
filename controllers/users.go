@@ -133,3 +133,30 @@ func (u *UserController) GetUserCore() {
 		u.ServeJson()
 	}
 }
+
+//20151026添加找回密码界面
+// @router /api/users/forget [get]
+func (u *UserController) GetFindPassWordPage() {
+	StaticPageRender("./view/findPwd.html", u.Ctx.ResponseWriter)
+}
+
+// @router /api/users/forget [post]
+func (u *UserController) PreForgotPassWord() {
+	var user models.User
+	user.UserName = u.GetString("username")
+	user.Email = u.GetString("email")
+	err := models.CheckUSerNameAndEmail(user)
+	if err != nil {
+		u.Data["json"] = models.ErrorContext{Err: err.Error()}
+	} else {
+		u.Data["json"] = models.ErrorContext{Data: "验证通过"}
+		var vcode models.Pair
+		vcode.UserName = user.UserName
+		key := models.MakeVcode(vcode.UserName)
+		vcode.Vcode = key
+		vcode.Nowtime = time.Now().Format("2006-01-02 15:04:05")
+		//models.ForGotSend(user.Email, vcode.Vcode)
+		models.SaveVcode(vcode)
+	}
+	u.ServeJson()
+}

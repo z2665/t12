@@ -115,3 +115,43 @@ func GetCoreUser(uc *UserCore) error {
 	coll.Find(bson.M{"username": uc.UserName}).Select(bson.M{"username": 1, "userpic": 1}).One(uc)
 	return nil
 }
+
+//通过用户名获取邮箱
+func GetUserEmailByName(u *User) {
+	s1 := GetSession()
+	defer s1.Close()
+	coll := s1.DB("test").C("users")
+	coll.Find(bson.M{"username": u.UserName}).Select(bson.M{"username": 1, "email": 1}).One(u)
+}
+
+//检查用户名和邮箱是否匹配
+func CheckUSerNameAndEmail(u User) error {
+	var user User
+	user.UserName = u.UserName
+	GetUserEmailByName(&user)
+	if u.Email == user.Email {
+		return nil
+	} else {
+		return errors.New("用户名和邮箱不匹配")
+	}
+}
+
+//用来存放验证信息
+type Pair struct {
+	UserName string
+	Vcode    string
+	Nowtime  string
+}
+
+//存储验证信息
+func SaveVcode(vcode Pair) {
+	s1 := GetSession()
+	defer s1.Close()
+	coll := s1.DB("test").C("uvcode")
+	n, _ := coll.Find(bson.M{"username": vcode.UserName}).Count()
+	if n > 0 {
+		//移除冗余
+		coll.Remove(bson.M{"username": vcode.UserName})
+	}
+	coll.Insert(&vcode)
+}
