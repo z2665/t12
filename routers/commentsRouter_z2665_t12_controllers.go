@@ -8,15 +8,15 @@ func init() {
 
 	beego.GlobalControllerRouter["z2665/t12/controllers:FromController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:FromController"],
 		beego.ControllerComments{
-			"GetFromAddPage",
-			`/api/froms/changs/add`,
+			"GetFromPublishPage",
+			`/api/froms/changs/publish`,
 			[]string{"get"},
 			nil})
 
 	beego.GlobalControllerRouter["z2665/t12/controllers:FromController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:FromController"],
 		beego.ControllerComments{
-			"FromAddByUser",
-			`/api/froms/changs/add`,
+			"FromPublishByUser",
+			`/api/froms/changs/publish`,
 			[]string{"post"},
 			nil})
 
@@ -24,6 +24,13 @@ func init() {
 		beego.ControllerComments{
 			"FromGetList",
 			`/api/froms/lsit`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["z2665/t12/controllers:IndexController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:IndexController"],
+		beego.ControllerComments{
+			"GetIndexPage",
+			`/`,
 			[]string{"get"},
 			nil})
 
@@ -55,8 +62,6 @@ func init() {
 			[]string{"post"},
 			nil})
 
-<<<<<<< HEAD
-=======
 	beego.GlobalControllerRouter["z2665/t12/controllers:UserController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:UserController"],
 		beego.ControllerComments{
 			"AddUserHeadPic",
@@ -85,5 +90,18 @@ func init() {
 			[]string{"get"},
 			nil})
 
->>>>>>> b0b70e73e651443ffde98cf327ecaf79a00b5b56
+	beego.GlobalControllerRouter["z2665/t12/controllers:UserController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:UserController"],
+		beego.ControllerComments{
+			"ForgotPassWord",
+			`/api/users/forgetpush`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["z2665/t12/controllers:UserController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:UserController"],
+		beego.ControllerComments{
+			"ForgotPassWordFianl",
+			`/api/users/forgetresult`,
+			[]string{"get"},
+			nil})
+
 }

@@ -5,6 +5,7 @@ import (
 	"github.com/astaxie/beego"
 	"gopkg.in/mgo.v2/bson"
 	"strconv"
+	"time"
 )
 
 //20150924创建最初版本，支持添加新用户和按名称查找
@@ -15,6 +16,7 @@ import (
 //20151004去除一些格式判断以后再加入
 //20151006加入用户头像，加入核心用户列
 //20151022移除ffjson依赖
+//20151112加入了完整的找回密码过程，不过存在部分问题
 type User struct {
 	UserName    string          `json:"userName"`
 	PassWord    string          `json:"passWord"`
@@ -127,6 +129,9 @@ func GetUserEmailByName(u *User) {
 //检查用户名和邮箱是否匹配
 func CheckUSerNameAndEmail(u User) error {
 	var user User
+	if u.Email == "" || u.UserName == "" {
+		return errors.New("用户名或者邮箱为空")
+	}
 	user.UserName = u.UserName
 	GetUserEmailByName(&user)
 	if u.Email == user.Email {
@@ -154,4 +159,44 @@ func SaveVcode(vcode Pair) {
 		coll.Remove(bson.M{"username": vcode.UserName})
 	}
 	coll.Insert(&vcode)
+}
+
+//检查验证信息是否过期和是否正确存在
+func CheckVcode(ucode Pair) (string, error) {
+	if ucode.Vcode == "" {
+		return "", errors.New("效验id为空，可能是非法访问")
+	}
+	var vcode Pair
+	s1 := GetSession()
+	defer s1.Close()
+	coll := s1.DB("test").C("uvcode")
+	err := coll.Find(bson.M{"vcode": ucode.Vcode}).One(&vcode)
+	if err != nil {
+		beego.Notice(err.Error())
+		return "", err
+	}
+
+	t1, _ := time.Parse("2006-01-02 15:04:05", vcode.Nowtime)
+	beego.Notice(t1.Format("2006-01-02 15:04:05"))
+	t2 := time.Now()
+	beego.Notice(t2.Format("2006-01-02 15:04:05"))
+	//时间相减存在问题
+	tsub := t2.Sub(t1)
+	beego.Notice(tsub.String())
+	if tsub.Minutes() > 5 {
+		return "", errors.New("该密匙已经过期")
+	}
+	beego.Notice(vcode.UserName)
+	//验证完成后从数据库里移除
+	//coll.Remove(bson.M{"vcode": ucode.Vcode})
+	return vcode.UserName, nil
+}
+
+//重置密码
+func UserRestPassWord(u User) error {
+	s1 := GetSession()
+	defer s1.Close()
+	coll := s1.DB("test").C("users")
+	err := coll.Update(bson.M{"username": u.UserName}, bson.M{"$set": bson.M{"password": u.PassWord}})
+	return err
 }

@@ -8,6 +8,7 @@ import (
 	"io"
 	"os"
 	"strings"
+	"time"
 	"z2665/t12/models"
 )
 
@@ -135,12 +136,12 @@ func (u *UserController) GetUserCore() {
 }
 
 //20151026添加找回密码界面
-// @router /api/users/forget [get]
+// @router /api/users/forget [post]
 func (u *UserController) GetFindPassWordPage() {
 	StaticPageRender("./view/findPwd.html", u.Ctx.ResponseWriter)
 }
 
-// @router /api/users/forget [post]
+// @router /api/users/forget [get]
 func (u *UserController) PreForgotPassWord() {
 	var user models.User
 	user.UserName = u.GetString("username")
@@ -157,6 +158,40 @@ func (u *UserController) PreForgotPassWord() {
 		vcode.Nowtime = time.Now().Format("2006-01-02 15:04:05")
 		//models.ForGotSend(user.Email, vcode.Vcode)
 		models.SaveVcode(vcode)
+	}
+	u.ServeJson()
+}
+
+// @router /api/users/forgetpush [get]
+func (u *UserController) ForgotPassWord() {
+	var vcode models.Pair
+	vcode.Vcode = u.GetString("id")
+	beego.Notice(vcode.Vcode)
+	uname, err := models.CheckVcode(vcode)
+	if err != nil {
+		u.Data["json"] = models.ErrorContext{Err: err.Error()}
+	} else {
+		u.Data["json"] = models.ErrorContext{Data: "验证通过"}
+		u.SetSession("ResetPassWord", uname)
+	}
+	u.ServeJson()
+}
+
+// @router /api/users/forgetresult [get]
+func (u *UserController) ForgotPassWordFianl() {
+	var us models.User
+	var ok bool
+	us.UserName, ok = u.GetSession("ResetPassWord").(string)
+	if !ok {
+		u.Data["json"] = models.ErrorContext{Err: "发生了未知的错误！"}
+	} else {
+		us.PassWord = u.GetString("password")
+		err := models.UserRestPassWord(us)
+		if err != nil {
+			u.Data["json"] = models.ErrorContext{Err: "发生了未知的错误！"}
+		} else {
+			u.Data["json"] = models.ErrorContext{Data: "重置成功!"}
+		}
 	}
 	u.ServeJson()
 }
