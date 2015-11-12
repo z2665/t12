@@ -130,7 +130,7 @@ func (u *UserController) GetUserCore() {
 		u.Redirect("/api/users/login", 302)
 	} else {
 		models.GetCoreUser(&uc)
-		u.Data["json"] = uc
+		u.Data["json"] = models.ErrorContext{Data: uc}
 		u.ServeJson()
 	}
 }
@@ -194,4 +194,18 @@ func (u *UserController) ForgotPassWordFianl() {
 		}
 	}
 	u.ServeJson()
+}
+
+// @router /api/users/nowuser [get]
+func (u *UserController) GetUserInformation() {
+	var us models.User
+	var ok bool
+	us.UserName, ok = u.GetSession("longined").(string)
+	if !ok {
+		u.Redirect("/api/users/login", 302)
+	} else {
+		models.GetUserInformation(&us)
+		u.Data["json"] = models.ErrorContext{Data: us}
+		u.ServeJson()
+	}
 }

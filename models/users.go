@@ -17,11 +17,12 @@ import (
 //20151006加入用户头像，加入核心用户列
 //20151022移除ffjson依赖
 //20151112加入了完整的找回密码过程，不过存在部分问题
+//20151113加入了获取用户信息的功能以及修复了一些bug
 type User struct {
 	UserName    string          `json:"userName"`
 	PassWord    string          `json:"passWord"`
 	TrueName    string          `json:"trueName"`
-	StuNum      string          `json:"stuName"`
+	StuNum      string          `json:"stuNumber"`
 	Tags        []string        `json:"tags"`
 	School      string          `json:"school"`
 	SchoolEx    string          `json:"schoolEx"`
@@ -201,4 +202,18 @@ func UserRestPassWord(u User) error {
 	coll := s1.DB("test").C("users")
 	err := coll.Update(bson.M{"username": u.UserName}, bson.M{"$set": bson.M{"password": u.PassWord}})
 	return err
+}
+
+//获取用户信息
+func GetUserInformation(u *User) error {
+	s1 := GetSession()
+	defer s1.Close()
+	coll := s1.DB("test").C("users")
+	err := coll.Find(bson.M{"username": u.UserName}).Select(bson.M{"username": 1, "email": 1, "truename": 1,
+		"stunum":   1,
+		"school":   1,
+		"schoolex": 1,
+		"userpic":  1}).One(u)
+	return err
+
 }
