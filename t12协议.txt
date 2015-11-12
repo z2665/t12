@@ -1,4 +1,4 @@
-﻿t12API协议 v0.14
+t12API协议 v0.14
 
 基础约定
 1./static为静态目录
@@ -105,6 +105,22 @@ response：
 request:ajax 
 method：post
 url:/api/users/forget?username=&email=
+response：
+ {
+	"err"   
+	"data" 
+}
+9.
+找回页面 part2 用户通过收到的邮件访问
+request:id 
+method：get
+url:/api/users/forgetpush?id=43e9a75dd804e96c8bfcc9ea20b99fe6
+response：
+ 重置密码的页面
+10.
+request:ajax 
+method：post
+url:/api/users/forgetresult?password=123
 response：
  {
 	"err"   

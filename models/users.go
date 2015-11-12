@@ -175,20 +175,22 @@ func CheckVcode(ucode Pair) (string, error) {
 		beego.Notice(err.Error())
 		return "", err
 	}
-
-	t1, _ := time.Parse("2006-01-02 15:04:05", vcode.Nowtime)
+	//按照本地时区解析时间
+	loc, _ := time.LoadLocation("Local")
+	t1, _ := time.ParseInLocation("2006-01-02 15:04:05", vcode.Nowtime, loc)
 	beego.Notice(t1.Format("2006-01-02 15:04:05"))
-	t2 := time.Now()
+	t2 := time.Now().Local()
 	beego.Notice(t2.Format("2006-01-02 15:04:05"))
-	//时间相减存在问题
-	tsub := t2.Sub(t1)
-	beego.Notice(tsub.String())
-	if tsub.Minutes() > 5 {
+	u1 := t2.Sub(t1)
+	beego.Notice(u1.String())
+	//设置过期时间为5分钟
+	if u1.Minutes() > 5 {
+		coll.Remove(bson.M{"vcode": ucode.Vcode})
 		return "", errors.New("该密匙已经过期")
 	}
 	beego.Notice(vcode.UserName)
 	//验证完成后从数据库里移除
-	//coll.Remove(bson.M{"vcode": ucode.Vcode})
+	coll.Remove(bson.M{"vcode": ucode.Vcode})
 	return vcode.UserName, nil
 }
 
