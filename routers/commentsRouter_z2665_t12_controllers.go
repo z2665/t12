@@ -80,27 +80,27 @@ func init() {
 		beego.ControllerComments{
 			"GetFindPassWordPage",
 			`/api/users/forget`,
-			[]string{"post"},
+			[]string{"get"},
 			nil})
 
 	beego.GlobalControllerRouter["z2665/t12/controllers:UserController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:UserController"],
 		beego.ControllerComments{
 			"PreForgotPassWord",
 			`/api/users/forget`,
-			[]string{"get"},
-			nil})
-
-	beego.GlobalControllerRouter["z2665/t12/controllers:UserController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:UserController"],
-		beego.ControllerComments{
-			"ForgotPassWord",
-			`/api/users/forgetpush`,
-			[]string{"get"},
+			[]string{"post"},
 			nil})
 
 	beego.GlobalControllerRouter["z2665/t12/controllers:UserController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:UserController"],
 		beego.ControllerComments{
 			"ForgotPassWordFianl",
 			`/api/users/forgetresult`,
+			[]string{"post"},
+			nil})
+
+	beego.GlobalControllerRouter["z2665/t12/controllers:UserController"] = append(beego.GlobalControllerRouter["z2665/t12/controllers:UserController"],
+		beego.ControllerComments{
+			"GetUserInformation",
+			`/api/users/nowuser`,
 			[]string{"get"},
 			nil})
 

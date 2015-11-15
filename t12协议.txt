@@ -104,24 +104,24 @@ response：
 找回页面
 request:ajax 
 method：post
-url:/api/users/forget?username=&email=
+url:/api/users/forget
+request:
+username
+email
 response：
  {
 	"err"   
 	"data" 
 }
 9.
-找回页面 part2 用户通过收到的邮件访问
+找回页面 part2 重置密码的页面
 request:id 
-method：get
-url:/api/users/forgetpush?id=43e9a75dd804e96c8bfcc9ea20b99fe6
-response：
- 重置密码的页面
-10.
-request:ajax 
 method：post
-url:/api/users/forgetresult?password=123
-response：
+url:/api/users/forgetresult
+request:
+id如43e9a75dd804e96c8bfcc9ea20b99fe6
+password
+ response：
  {
 	"err"   
 	"data" 
