@@ -25,25 +25,30 @@
 	background-color:#eee;
 }
 
-#v-code,#psd{
+#v-code,#psd,#username{
 	margin-left:4px;
-	width:100px;
+	width:176px;
 }
 
-.step2 #v-code,.step2 #psd,.step2 #username{
-	margin-left:42px;
+.step2 #v-code,.step2 #psd{
+	margin-left:18px;
 }
+
 .step1 #username-email{
 	margin-left:20px;
 	width:200px;
 }
-.step2 #username-email{
-	margin-left:10px;
-	width:200px;
+
+.step2 #guard-code{
+	margin-left:18px;
+	height:30px;
 }
 
+.step2 #psd-again{
+	margin-left:3px;
+}
 
-#v-code,#username-email,.vcode-img,#username,#psd{
+#v-code,#username-email,.vcode-img,#username,#psd,#psd-again{
 	
 	height:30px;
    
@@ -100,8 +105,6 @@ ul li label,ul li img,ul li input{float:left;}
 
 
 .step2{display:none;}
-
-
 
 .step1 .error-tip {
 	float:left;
