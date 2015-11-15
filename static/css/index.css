@@ -11,7 +11,7 @@ body{font-family:Microsoft Yahei;}
     background-color: #0099CC;
     position:absolute;
     left:0;
-    background-image: url(../img/header-bg.png);
+    background-image: url(/static/img/header-bg.png);
     color:white;
 }
 
@@ -24,7 +24,7 @@ body{font-family:Microsoft Yahei;}
 .logo{
     height:100%;
     width:45%;
-    background-image:url(../img/logo.png); 
+    background-image:url(/static/img/logo.png); 
     background-repeat:no-repeat;
     background-position:0 60px ;
     float:left;

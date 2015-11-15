@@ -1,4 +1,4 @@
-html{
+﻿html{
 	height:100%;
 }
 body{
@@ -14,7 +14,7 @@ body{
     width:100%;
     position:absolute;
     left:0;
-    background-image:url(../img/header-bg.png); 
+    background-image:url(/static/img/header-bg.png); 
 }
 
 .header .nav{
@@ -25,7 +25,7 @@ body{
 
 .logo {
     float: left;
-    background-image: url(../img/logo.png);
+    background-image: url(/static/img/logo.png);
     display: block;
     width: 120px;
     height: 115px;
@@ -61,16 +61,16 @@ a{text-decoration:none;}
 }
 
 .msg{
-	background:url(../img/msg.png) no-repeat left;
+	background:url(/static/img/msg.png) no-repeat left;
 	padding-left:25px;
 }
 
 .set{
-	background:url(../img/setLogo.png) no-repeat left;
+	background:url(/static/img/setLogo.png) no-repeat left;
 	padding-left:25px;
 }
 .my-self{
-	background:url(../img/myHeadImg.png) no-repeat left;
+	background:url(/static/img/myHeadImg.png) no-repeat left;
 	padding-left:28px;
 }
 

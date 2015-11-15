@@ -106,7 +106,7 @@ request:ajax
 method：post
 url:/api/users/forget
 request:
-username
+userName
 email
 response：
  {

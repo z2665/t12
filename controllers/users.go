@@ -3,6 +3,7 @@ package controllers
 //20150928加入登陆和注册逻辑
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego"
 	"io"
@@ -144,8 +145,9 @@ func (u *UserController) GetFindPassWordPage() {
 // @router /api/users/forget [post]
 func (u *UserController) PreForgotPassWord() {
 	var user models.User
-	user.UserName = u.GetString("username")
-	user.Email = u.GetString("email")
+	tempdata := u.GetString("data")
+	json.Unmarshal([]byte(tempdata), &user)
+	beego.Notice(user)
 	err := models.CheckUSerNameAndEmail(user)
 	if err != nil {
 		u.Data["json"] = models.ErrorContext{Err: err.Error()}
@@ -162,18 +164,27 @@ func (u *UserController) PreForgotPassWord() {
 	u.ServeJson()
 }
 
+//获取id和password的组合
+type forgotReq struct {
+	Vcode string `json:"id"`
+	Pass  string `json:"password"`
+}
+
 // @router /api/users/forgetresult [post]
 func (u *UserController) ForgotPassWordFianl() {
 	var us models.User
 	var vcode models.Pair
 	var err error
-	vcode.Vcode = u.GetString("id")
+	var forgotreq forgotReq
+	tempdata := u.GetString("data")
+	json.Unmarshal([]byte(tempdata), &forgotreq)
+	vcode.Vcode = forgotreq.Vcode
 	beego.Notice(vcode.Vcode)
 	us.UserName, err = models.CheckVcode(vcode)
 	if err != nil {
 		u.Data["json"] = models.ErrorContext{Err: err.Error()}
 	} else {
-		us.PassWord = u.GetString("password")
+		us.PassWord = forgotreq.Pass
 		err := models.UserRestPassWord(us)
 		if err != nil {
 			u.Data["json"] = models.ErrorContext{Err: "发生了未知的错误！"}
