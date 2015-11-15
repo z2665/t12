@@ -2,7 +2,7 @@ $(function(){
     $(".step1 .submit-btn").click(function(ev){
         var accountInfo={
             username:$(".step1 #username").val(),
-            contact:$(".step1 #username-email").val()
+            email:$(".step1 #username-email").val()
         },
         jsonAccountInfo=JSON.stringify(accountInfo); 
 
